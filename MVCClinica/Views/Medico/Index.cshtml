@@ -17,6 +17,13 @@
     {
         @Html.TextBox("especialidad", null)
         <input type="submit" value="Get Por Especialidad" />
+    } 
+    
+    @using (Html.BeginForm("TraerPorNombreCompleto", "Medico", FormMethod.Get))
+    {
+        @Html.TextBox("nombre", null)
+        @Html.TextBox("apellido", null)
+        <input type="submit" value="Get" />
     }
     <table>
         <tr>

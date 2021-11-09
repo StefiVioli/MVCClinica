@@ -1,4 +1,5 @@
-﻿using MVCClinica.Models;
+﻿using MVCClinica.Filters;
+using MVCClinica.Models;
 using MVCClinica.Repositorio;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace MVCClinica.Controllers
 {
+   
     public class MedicoController : Controller
     {
         // GET: Medico
@@ -27,6 +29,7 @@ namespace MVCClinica.Controllers
             return View("Create", medico);
         }
 
+        [MyFilterAction]
         [HttpPost]
         public ActionResult Create(Medico medico)
         {
@@ -136,6 +139,18 @@ namespace MVCClinica.Controllers
             }
 
             return View("Index", AdminMedico.TraerPorEspecialidad(especialidad));
+
+        }
+
+        [HttpGet]
+        public ActionResult TraerPorNombreCompleto(string nombre, string apellido)
+        {
+            if (nombre == null || apellido == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            return View("Index", AdminMedico.TraerPorNombreApellido(nombre,apellido));
 
         }
 

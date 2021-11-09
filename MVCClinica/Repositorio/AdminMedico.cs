@@ -60,6 +60,14 @@ namespace MVCClinica.Repositorio
             return medicosEspecialidad;
         }
 
+        public static List<Medico> TraerPorNombreApellido(string nombre, string apellido)
+        {
+            List<Medico> medicos = (from m in context.Medicos
+                                                where m.Nombre == nombre &&
+                                                m.Apellido == apellido
+                                                select m).ToList();
+            return medicos;
+        }
     }
 }
 
