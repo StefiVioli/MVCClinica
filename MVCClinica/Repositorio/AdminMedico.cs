@@ -31,8 +31,8 @@ namespace MVCClinica.Repositorio
         //Modificación
         public static void Modificar(Medico medico)
         {
-            //context.Entry(medico).State = EntityState.Modified;
             context.Medicos.Attach(medico);
+            context.Entry(medico).State = EntityState.Modified;
             context.SaveChanges();
         }
 
@@ -47,6 +47,7 @@ namespace MVCClinica.Repositorio
         //Eliminación
         public static void Eliminar(Medico medico)
         {
+            context.Medicos.Attach(medico);
             context.Medicos.Remove(medico);
             context.SaveChanges();
         }

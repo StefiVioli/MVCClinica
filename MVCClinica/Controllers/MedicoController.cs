@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace MVCClinica.Controllers
 {
-   
+   [MyFilterAction]
     public class MedicoController : Controller
     {
         // GET: Medico
@@ -133,7 +133,7 @@ namespace MVCClinica.Controllers
         [HttpGet]
         public ActionResult TraerPorEspecialidad(string especialidad)
         {
-            if (especialidad == null)
+            if (especialidad == "" || especialidad == "TODAS")
             {
                 return RedirectToAction("Index");
             }
@@ -145,7 +145,7 @@ namespace MVCClinica.Controllers
         [HttpGet]
         public ActionResult TraerPorNombreCompleto(string nombre, string apellido)
         {
-            if (nombre == null || apellido == null)
+            if (nombre == "" || apellido == "")
             {
                 return RedirectToAction("Index");
             }
